@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>After School Classes - Shopping Cart</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/cart.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        After School Classes
+      </div>
+      <div class="nav-buttons">
+        <button onclick="goToLessons()" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i>
+          Back to Lessons
+        </button>
+      </div>
+    </nav>
+  </header>
+
+<div class="container">
+  <h1 class="page-title">
+    <i class="fas fa-shopping-cart"></i>
+    Shopping Cart
+  </h1>
+
+    <div class="cart-section">
+        <div class="cart-items">
+            <h2 class="section-title">
+                <i class="fas fa-list"></i>
+                Your Selected Lessons
+            </h2>
+            <div id="cartItemsContainer">
+                <!-- Cart items will be populated here -->
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2 class="section-title">
+                <i class="fas fa-calculator"></i>
+                Order Summary
+            </h2>
+            <div id="summaryContainer">
+                <!-- Summary will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-section">
+        <h2 class="section-title">
+            <i class="fas fa-credit-card"></i>
+            Checkout
+        </h2>
+        
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="customerName">Full Name *</label>
+                <input 
+                    type="text" 
+                    id="customerName" 
+                    class="form-control" 
+                    placeholder="Enter your full name"
+                    required
+                >
+                <div class="error-message" id="nameError">Name must contain only letters</div>
+            </div>
+
+            <div class="form-group">
+                <label for="customerPhone">Phone Number *</label>
+                <input 
+                    type="tel" 
+                    id="customerPhone" 
+                    class="form-control" 
+                    placeholder="Enter your phone number"
+                    required
+                >
+                <div class="error-message" id="phoneError">Phone must contain only numbers</div>
+            </div>
+
+            <button type="submit" id="checkoutBtn" class="checkout-btn" disabled>
+                <i class="fas fa-check"></i>
+                Complete Order
+            </button>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                Order submitted successfully! Thank you for your purchase.
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="./js/cart.js"></script>
+</body>
+</html>
