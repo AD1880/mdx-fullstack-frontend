@@ -268,9 +268,10 @@ let app = new Vue({
   
   // MOUNTED: Called after the Vue instance is mounted to the DOM
   async mounted() {
-    console.log('🚀 Vue app mounted, loading lessons...');
+    console.log(' Vue app mounted, loading lessons...');
     
     // Load lessons when the app starts
     await this.fetchLessons();
   }
 });
+
