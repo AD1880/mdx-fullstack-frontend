@@ -6,7 +6,7 @@ new Vue({
   // DATA: All the reactive data for our application
   data: {
       // API Configuration
-      apiUrl: 'http://localhost:3000', // Change this to your backend URL
+      apiUrl: 'https://mdx-fullstack-backend.onrender.com', // Change this to your backend URL
       
       // Lessons Data
       allLessons: [],        // All lessons from the API
