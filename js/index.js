@@ -1,6 +1,6 @@
 
 // Vue.js Application
-new Vue({
+let app = new Vue({
   el: '#app',
   
   // DATA: All the reactive data for our application
