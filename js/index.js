@@ -25,9 +25,9 @@ let app = new Vue({
           name: '',
           phone: ''
       },
-      submittingOrder: false, // Show loading state during order submission
-      orderSuccess: null,     // Order success message
-      orderError: null        // Order error message
+      submittingOrder: false,
+      orderSuccess: null,
+      orderError: null,
   },
   
   // COMPUTED PROPERTIES: Values that are calculated based on other data
