@@ -10,20 +10,18 @@ let app = new Vue({
       displayedLessons: [],  
       
      
-      loading: true,         // Show loading spinner
-      error: null,          // Error message to display
+      loading: true,
+      error: null, 
+
+      searchQuery: '',
+      sortBy: 'subject',
+      sortOrder: 'asc',
       
-      // Search and Sort
-      searchQuery: '',      // User's search input
-      sortBy: 'subject',    // Current sort field
-      sortOrder: 'asc',     // Current sort order
       
-      // Shopping Cart
-      cartItems: [],        // Items in the cart
+      cartItems: [],
       
-      // Checkout Modal
-      showCheckout: false,  // Show/hide checkout modal
-      customerInfo: {       // Customer form data
+      showCheckout: false,  
+      customerInfo: {       
           name: '',
           phone: ''
       },
