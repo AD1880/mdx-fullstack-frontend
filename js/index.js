@@ -1,5 +1,3 @@
-
-// Vue.js Application
 let app = new Vue({
   el: '#app',
   
@@ -49,24 +47,24 @@ let app = new Vue({
         this.loading = true;
         this.error = null;
         
-        // Make API call to get lessons
+        
         const response = await fetch(`${this.apiUrl}/lessons`);
         
-        // Check if request was successful
+       
         if (!response.ok) {
             throw new Error(`Failed to fetch lessons: ${response.status}`);
         }
           
-        // Parse JSON response
+       
         const lessons = await response.json();
           
         console.log(`✅ Loaded ${lessons.length} lessons`);
           
-        // Update our data
+       
         this.allLessons = lessons;
-        this.displayedLessons = [...lessons]; // Copy the array
+        this.displayedLessons = [...lessons]; 
           
-        // Apply current sorting
+        
         this.sortLessons();
           
       } catch (error) {
@@ -82,14 +80,14 @@ let app = new Vue({
       try {
         console.log('🔍 Searching lessons:', this.searchQuery);
           
-        // If search is empty, show all lessons
+       
         if (!this.searchQuery.trim()) {
             this.displayedLessons = [...this.allLessons];
             this.sortLessons();
             return;
         }
             
-        // Make API call to search lessons
+        
         const response = await fetch(`${this.apiUrl}/search?query=${encodeURIComponent(this.searchQuery)}`);
             
         if (!response.ok) {
@@ -100,10 +98,10 @@ let app = new Vue({
             
         console.log(`✅ Found ${searchResults.length} results`);
             
-        // Update displayed lessons
+        
         this.displayedLessons = searchResults;
             
-        // Apply current sorting
+        
         this.sortLessons();
             
         } catch (error) {
@@ -120,13 +118,13 @@ let app = new Vue({
             let valueA = a[this.sortBy];
             let valueB = b[this.sortBy];
             
-            // Handle string comparisons (case insensitive)
+            
             if (typeof valueA === 'string') {
                 valueA = valueA.toLowerCase();
                 valueB = valueB.toLowerCase();
             }
             
-            // Compare values
+            
             let comparison = 0;
             if (valueA < valueB) {
                 comparison = -1;
@@ -134,7 +132,7 @@ let app = new Vue({
                 comparison = 1;
             }
             
-            // Apply sort order
+           
             return this.sortOrder === 'desc' ? comparison * -1 : comparison;
         });
     },
@@ -143,7 +141,7 @@ let app = new Vue({
     addToCart(lesson) {
         console.log('🛒 Adding to cart:', lesson.subject);
         
-        // Check if lesson is already in cart
+        
         const existingItem = this.cartItems.find(item => item._id === lesson._id);
         
         if (existingItem) {
@@ -151,7 +149,7 @@ let app = new Vue({
             return;
         }
         
-        // Add lesson to cart
+        
         this.cartItems.push({
             _id: lesson._id,
             subject: lesson.subject,
@@ -170,7 +168,7 @@ let app = new Vue({
             this.submittingOrder = true;
             this.orderError = null;
             
-            // Prepare order data
+           
             const orderData = {
                 name: this.customerInfo.name,
                 phone: this.customerInfo.phone,
@@ -184,7 +182,7 @@ let app = new Vue({
                 totalAmount: this.cartTotal
             };
             
-            // Make API call to create order
+           
             const response = await fetch(`${this.apiUrl}/orders`, {
                 method: 'POST',
                 headers: {
@@ -202,14 +200,14 @@ let app = new Vue({
             
             console.log('✅ Order placed successfully:', result);
             
-            // Show success message
+            
             this.orderSuccess = result.orderNumber || result.orderId;
             
-            // Clear cart and form
+            
             this.cartItems = [];
             this.customerInfo = { name: '', phone: '' };
             
-            // Refresh lessons to update available spaces
+           
             await this.fetchLessons();
             
         } catch (error) {
@@ -226,7 +224,7 @@ let app = new Vue({
         this.orderSuccess = null;
         this.orderError = null;
         
-        // If order was successful, reset form
+        
         if (this.orderSuccess) {
             this.customerInfo = { name: '', phone: '' };
         }
