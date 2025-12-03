@@ -30,18 +30,18 @@ let app = new Vue({
       orderError: null,
   },
   
-  // COMPUTED PROPERTIES: Values that are calculated based on other data
+  
   computed: {
-      // Calculate total price of items in cart
+      
       cartTotal() {
           return this.cartItems.reduce((total, item) => total + item.price, 0);
       }
   },
   
-  // METHODS: Functions that can be called from the template or other methods
+  
   methods: {
       
-    // FETCH LESSONS: Get all lessons from the API
+    
     async fetchLessons() {
       try {
         console.log('📚 Fetching lessons from API...');
@@ -77,7 +77,7 @@ let app = new Vue({
       }
     },
       
-    // SEARCH LESSONS: Filter lessons based on search query
+   
     async searchLessons() {
       try {
         console.log('🔍 Searching lessons:', this.searchQuery);
@@ -112,7 +112,7 @@ let app = new Vue({
         }
     },
       
-    // SORT LESSONS: Sort the displayed lessons
+    
     sortLessons() {
         console.log(`📊 Sorting by ${this.sortBy} (${this.sortOrder})`);
         
@@ -139,7 +139,7 @@ let app = new Vue({
         });
     },
       
-    // ADD TO CART: Add a lesson to the shopping cart
+   
     addToCart(lesson) {
         console.log('🛒 Adding to cart:', lesson.subject);
         
@@ -163,7 +163,6 @@ let app = new Vue({
         console.log(`✅ Cart now has ${this.cartItems.length} items`);
     },
       
-    // SUBMIT ORDER: Send order to the backend
     async submitOrder() {
         try {
             console.log('📝 Submitting order...');
@@ -221,7 +220,7 @@ let app = new Vue({
         }
     },
       
-    // CLOSE MODAL: Close the checkout modal
+    
     closeModal() {
         this.showCheckout = false;
         this.orderSuccess = null;
@@ -233,7 +232,7 @@ let app = new Vue({
         }
     },
       
-    // GET LESSON ICON: Return appropriate icon for each subject
+   
     getLessonIcon(subject) {
         const iconMap = {
             'Math': 'fas fa-calculator',
@@ -251,21 +250,18 @@ let app = new Vue({
         return iconMap[subject] || 'fas fa-graduation-cap';
     },
     
-    // GET SPACES CLASS: Return CSS class based on available spaces
+    
     getSpacesClass(spaces) {
         if (spaces === 0) return 'spaces-available';
         if (spaces <= 5) return 'spaces-available low';
         return 'spaces-available available';
     }
   },
-  
-  // LIFECYCLE HOOKS: Functions that run at specific points in the component lifecycle
-  
-  // MOUNTED: Called after the Vue instance is mounted to the DOM
+
   async mounted() {
     console.log(' Vue app mounted, loading lessons...');
     
-    // Load lessons when the app starts
+    
     await this.fetchLessons();
   }
 });
