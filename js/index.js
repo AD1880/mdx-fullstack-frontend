@@ -3,16 +3,13 @@
 let app = new Vue({
   el: '#app',
   
-  // DATA: All the reactive data for our application
   data: {
-      // API Configuration
-      apiUrl: 'https://mdx-fullstack-backend.onrender.com', // Change this to your backend URL
+      apiUrl: 'https://mdx-fullstack-backend.onrender.com', 
       
-      // Lessons Data
-      allLessons: [],        // All lessons from the API
-      displayedLessons: [],  // Lessons currently shown (after search/sort)
+      allLessons: [],        
+      displayedLessons: [],  
       
-      // UI State
+     
       loading: true,         // Show loading spinner
       error: null,          // Error message to display
       
